@@ -4,7 +4,7 @@ export default function NavBar() {
   // About, Projects, Tech Stacks
   return (
     <>
-      <nav className="navbar fixed z-50 justify-center bg-base-200/5 backdrop-blur-sm shadow-md h-14 py-0">
+      <nav className="navbar fixed z-50 justify-center backdrop-blur-sm shadow-md h-14 py-0">
         <div className="navbar-start h-full justify-center">
           <Link className="" href={'/'} >Aaron Arquette</Link>
         </div>
