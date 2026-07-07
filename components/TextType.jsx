@@ -1,13 +1,18 @@
 'use client';
 
-import { useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
+import { 
+  useEffect, 
+  useRef, 
+  useState, 
+  // createElement, 
+  useMemo, useCallback } from 'react';
 import { gsap } from 'gsap';
 import GradientText from './GradientText'
 import './TextType.css';
 
 const TextType = ({
   text,
-  as: Component = 'div',
+  // as: Component = 'div',
   typingSpeed = 50,
   initialDelay = 0,
   pauseDuration = 2000,
@@ -19,7 +24,7 @@ const TextType = ({
   cursorCharacter = '|',
   cursorClassName = '',
   cursorBlinkDuration = 0.5,
-  textColors = [],
+  // textColors = [],
   variableSpeed,
   onSentenceComplete,
   startOnVisible = false,
@@ -42,10 +47,10 @@ const TextType = ({
     return Math.random() * (max - min) + min;
   }, [variableSpeed, typingSpeed]);
 
-  const getCurrentTextColor = () => {
-    if (textColors.length === 0) return 'inherit';
-    return textColors[currentTextIndex % textColors.length];
-  };
+  // const getCurrentTextColor = () => {
+  //   if (textColors.length === 0) return 'inherit';
+  //   return textColors[currentTextIndex % textColors.length];
+  // };
 
   useEffect(() => {
     if (!startOnVisible || !containerRef.current) return;
@@ -151,35 +156,55 @@ const TextType = ({
   const shouldHideCursor =
     hideCursorWhileTyping && (currentCharIndex < textArray[currentTextIndex].length || isDeleting);
 
-  return createElement(
-    Component,
-    {
-      ref: containerRef,
-      className: `text-type ${className}`,
-      ...props
-    },
-    // <span className="text-type__content" style={{ color: getCurrentTextColor() || 'inherit' }}>
-    //   {displayedText}
-    // </span>
-    <span className="text-type__content" style={{ color: getCurrentTextColor() || 'inherit' }}>
+  // return createElement(
+  //   Component,
+  //   {
+  //     ref: containerRef,
+  //     className: `text-type ${className}`,
+  //     ...props
+  //   },
+  //   // <span className="text-type__content" style={{ color: getCurrentTextColor() || 'inherit' }}>
+  //   //   {displayedText}
+  //   // </span>
+  //   <GradientText
+  //     colors={["#5227FF","#FF9FFC","#B497CF"]}
+  //     animationSpeed={8}
+  //     showBorder={false}
+  //     className="text-type__content"
+  //   >
+  //     {displayedText}
+  //   </GradientText>,
+  //   showCursor && (
+  //     <span
+  //       ref={cursorRef}
+  //       className={`text-type__cursor ${cursorClassName} ${shouldHideCursor ? 'text-type__cursor--hidden' : ''}`}
+  //     >
+  //       {cursorCharacter}
+  //     </span>
+  //   )
+  // );
+  return (
+    <div ref={containerRef} className={`text-type ${className}`} {...props}>
       <GradientText
-        colors={["#5227FF","#FF9FFC","#B497CF"]}
+        colors={["#5227FF", "#FF9FFC", "#B497CF"]}
         animationSpeed={8}
         showBorder={false}
         className="text-type__content"
       >
         {displayedText}
       </GradientText>
-    </span>,
-    showCursor && (
-      <span
-        ref={cursorRef}
-        className={`text-type__cursor ${cursorClassName} ${shouldHideCursor ? 'text-type__cursor--hidden' : ''}`}
-      >
-        {cursorCharacter}
-      </span>
-    )
+
+      {showCursor && (
+        <span
+          ref={cursorRef}
+          className={`text-type__cursor ${cursorClassName} ${shouldHideCursor ? 'text-type__cursor--hidden' : ''}`}
+        >
+          {cursorCharacter}
+        </span>
+      )}
+    </div>
   );
+
 };
 
 export default TextType;
