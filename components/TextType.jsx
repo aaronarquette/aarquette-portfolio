@@ -29,6 +29,7 @@ const TextType = ({
   onSentenceComplete,
   startOnVisible = false,
   reverseMode = false,
+  colors = ["#5227FF", "#FF9FFC", "#B497CF"],
   ...props
 }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -186,7 +187,7 @@ const TextType = ({
   return (
     <div ref={containerRef} className={`text-type ${className}`} {...props}>
       <GradientText
-        colors={["#5227FF", "#FF9FFC", "#B497CF"]}
+        colors={colors}
         animationSpeed={8}
         showBorder={false}
         className="text-type__content"
