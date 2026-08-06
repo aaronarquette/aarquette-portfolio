@@ -8,6 +8,7 @@ import { GrDocumentPdf } from "react-icons/gr";
 import { NoiseBackground } from '@/components/ui/noise-background';
 import { Box, Lock, Search, Settings, Sparkles } from "lucide-react";
 import GridItem from '@/components/GridItem';
+
 export default function Home() {
   const tagline1 = "Turning ", tagline2 = "Into Seamless Web Applications"
   const keywords = ["User Needs", "Database Schema", "Complex Logic"]
@@ -20,7 +21,7 @@ export default function Home() {
       <section className="hero bg-background min-h-screen">
         <div className="hero-content text-center">
           <div className="max-w-6xl">
-            <h1 className="text-2xl">Aaron Arquette · Software Developer</h1>
+            <h1 className="text-2xl">Aaron Arquette · Software Developer</h1> 
             <div className="pt-3 pb-5.5">
               <div className='py-1'>
                 <span className="text-6xl font-bold">{tagline1}</span>
@@ -47,7 +48,7 @@ export default function Home() {
               {techStack.map((techStack, idx) => (
                 <button key={idx} className="p-0.75 m-1 relative">
                   <div className="absolute inset-0 bg-linear-to-r from-indigo-500 to-purple-500 rounded-full" />
-                  <div className="px-2.5 py-1.5 bg-black rounded-full relative group transition duration-200 text-xs hover:bg-transparent">
+                  <div className="px-2.5 py-1.5 bg-background rounded-full relative group transition duration-200 text-xs hover:bg-transparent">
                     {techStack}
                   </div>
                 </button>
@@ -67,7 +68,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="hero bg-background h-screen">
+      <section className="hero h-screen">
         <div className="hero-content flex-col">
           {/* <Image></Image> */}
           <h1 className="text-5xl font-bold">About</h1>
