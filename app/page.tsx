@@ -6,7 +6,7 @@ import { FiGithub } from "react-icons/fi";
 import { FaLinkedinIn } from "react-icons/fa";
 import { GrDocumentPdf } from "react-icons/gr";
 import { NoiseBackground } from '@/components/ui/noise-background';
-import { Box, Lock, Search, Settings, Sparkles } from "lucide-react";
+import { Wrench, Sparkles, Layers, Zap } from "lucide-react";
 import GridItem from '@/components/GridItem';
 
 export default function Home() {
@@ -21,10 +21,10 @@ export default function Home() {
       <section className="hero bg-background min-h-screen">
         <div className="hero-content text-center">
           <div className="max-w-6xl">
-            <h1 className="text-2xl">Aaron Arquette · Software Developer</h1> 
+            <h1 className="text-xl md:text-2xl">Aaron Arquette · Software Developer</h1> 
             <div className="pt-3 pb-5.5">
               <div className='py-1'>
-                <span className="text-6xl font-bold">{tagline1}</span>
+                <span className="text-5xl md:text-6xl font-bold">{tagline1}</span>
                 <span>
                   <TextType
                     text={keywords}
@@ -38,11 +38,12 @@ export default function Home() {
                     onSentenceComplete={""}
                     cursorBlinkDuration={0.5}
                     // colors={}
-                    className="text-6xl"
+                    className="text-5xl md:text-6xl"
                   />
                 </span>
+                {/*//TODO: Fix Cumulative Layout Shift on smaller, vertical screens*/}
               </div>
-              <h1 className="text-6xl font-bold py-3">{tagline2}</h1>
+              <h1 className="text-5xl md:text-6xl font-bold py-3">{tagline2}</h1>
             </div>
             <div className="flex justify-center pb-4">
               {techStack.map((techStack, idx) => (
@@ -69,43 +70,36 @@ export default function Home() {
         </div>
       </section>
       <section className="hero h-screen">
-        <div className="hero-content flex-col">
+        <div className="relative hero-content flex-col md:p-10">
           {/* <Image></Image> */}
-          <h1 className="text-5xl font-bold">About</h1>
-          <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-136 xl:grid-rows-2">
+          <div className='xl:absolute xl:inset-0 xl:flex xl:items-center xl:justify-center'>
+            <h1 className="text-5xl font-bold">About Me</h1>
+          </div>
+          {/*//TODO: Fix bento grid design -> Make it look better and more like bento grids */}
+          <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-204 xl:grid-rows-3">
             <GridItem
-              area="md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]"
-              icon={<Box className="h-4 w-4 text-black dark:text-neutral-400" />}
-              title="Do things the right way"
-              description="Running out of copy so I'll write anything."
+              area="md:[grid-area:1/1/2/13] xl:[grid-area:1/1/3/5]"
+              icon={<Layers className="h-4 w-4 text-black dark:text-neutral-400" />}
+              title="Unconventional Full&#8209;Stack Developer"
+              description="I designed and simulated large-scale industrial processes during my formal studies in Chemical Engineering. Using the same principles, I now develop robust end-to-end web applications that not only look great, but feel great to use."
             />
-
             <GridItem
-              area="md:[grid-area:1/7/2/13] xl:[grid-area:2/1/3/5]"
-              icon={<Settings className="h-4 w-4 text-black dark:text-neutral-400" />}
-              title="The best AI code editor ever."
-              description="Yes, it's true. I'm not even kidding. Ask my mom if you don't believe me."
+              area="md:[grid-area:3/1/4/13] xl:[grid-area:2/9/4/13]"
+              icon={<Wrench className="h-4 w-4 text-black dark:text-neutral-400" />}
+              title="Problem Solver at Heart, Efficiency in Mind"
+              description="My engineering background shaped my thinking framework, giving me the capacity to shape solutions that fit exactly within design constraints while fulfilling, if not exceeding the design specifications. Data pipelines and gas pipelines don't differ too much in terms of design goals, eh?"
             />
-
             <GridItem
-              area="md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]"
-              icon={<Lock className="h-4 w-4 text-black dark:text-neutral-400" />}
-              title="You should buy Aceternity UI Pro"
-              description="It's the best money you'll ever spend"
-            />
-
-            <GridItem
-              area="md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]"
+              area="md:[grid-area:2/1/3/7] xl:[grid-area:1/5/2/13]"
               icon={<Sparkles className="h-4 w-4 text-black dark:text-neutral-400" />}
-              title="This card is also built by Cursor"
-              description="I'm not even kidding. Ask my mom if you don't believe me."
+              title="AI-Assisted Workflows, but With Depth"
+              description="In the age of LLMs, developers become slaves to model tokens and usage credits. I want to flip that. AI is to aid but not to become dependent on."
             />
-
             <GridItem
-              area="md:[grid-area:3/1/4/13] xl:[grid-area:2/8/3/13]"
-              icon={<Search className="h-4 w-4 text-black dark:text-neutral-400" />}
-              title="Coming soon on Aceternity UI"
-              description="I'm writing the code as I record this, no shit."
+              area="md:[grid-area:2/7/3/13] xl:[grid-area:3/1/4/9]"
+              icon={<Zap className="h-4 w-4 text-black dark:text-neutral-400" />}
+              title="Adaptability in Speed without the Mess"
+              description="There are always new frameworks, programming languages, and libraries in the horizon. You can only choose to learn quickly or lose the battle. I choose the former."
             />
           </ul>
         </div>
