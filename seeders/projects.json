@@ -1,6 +1,7 @@
 [
   {
     "title": "Wordiv8",
+    "icon": "book-a",
     "frontendStack": ["React", "Socket.IO", "Firebase"],
     "backendStack": ["Node.js", "Express.js", "Google Gemini"],
     "projectType": "Group",
@@ -13,6 +14,7 @@
   },
   {
     "title": "Impression",
+    "icon": "briefcase-business",
     "frontendStack" : ["React", "Next.js", "Tailwind CSS", "Axios", "Vercel"],
     "backendStack": ["Node.js", "Express.js", "Google Gemini", "Cloudinary", "JWT", "Sequelize", "PostgreSQL", "Supabase", "AWS"],
     "projectType": "Group",
@@ -25,6 +27,7 @@
   },
   {
     "title": "Portfolio Website",
+    "icon": "file-text",
     "frontendStack": ["React", "Next.js", "DaisyUI", "Tailwind CSS", "Vercel"],
     "backendStack": ["Next.js"],
     "projectType": "Personal",
@@ -37,6 +40,7 @@
   },
   {
     "title": "Booktiv8",
+    "icon": "library-big",
     "frontendStack": ["React", "DaisyUI", "Tailwind CSS", "React Redux", "Axios", "Firebase"],
     "backendStack": ["Node.js", "Express.js", "Google Gemini", "Google OAuth", "JWT", "Axios", "Sequelize", "PostgreSQL", "Supabase", "AWS"],
     "projectType": "Personal",
@@ -49,6 +53,7 @@
   },
   {
     "title": "HacktivTube",
+    "icon": "image-up",
     "frontendStack": ["React Native", "Expo", "Apollo Client"],
     "backendStack": ["Node.js", "Apollo Server", "JWT", "GraphQL", "Redis", "MongoDB", "MongoDB Atlas", "AWS"],
     "projectType": "Personal",
@@ -61,6 +66,7 @@
   },
   {
     "title": "Mandalika Music",
+    "icon": "shopping-cart",
     "frontendStack": ["React", "Next.js", "DaisyUI", "SweetAlert2", "Tailwind CSS"],
     "backendStack": ["Next.js", "Zod", "JWT", "MongoDB", "MongoDB Atlas"],
     "projectType": "Personal",
