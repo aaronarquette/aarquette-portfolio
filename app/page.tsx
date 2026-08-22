@@ -149,7 +149,7 @@ export default function Home() {
                 <ProjectsGridItem 
                 key={idx}
                 area={`md:[grid-area:${1 + Math.floor(idx / projectsCol.md)}/${idx % projectsCol.md + 1}/${Math.floor(idx / projectsCol.md) + 2}/${idx % projectsCol.md + 2}] xl:[grid-area:${1 + Math.floor(idx / projectsCol.xl)}/${idx % projectsCol.xl + 1}/${Math.floor(idx / projectsCol.xl) + 2}/${idx % projectsCol.xl + 2}]`}
-                icon={<IconDictionary icon={project.icon}/> /*//TODO: Optimize this component by manually mapping all icons into imports */}
+                icon={<IconDictionary icon={project.icon}/>}
                 title={project.title}
                 description={project.description}
                 isLive={project.isLive}
