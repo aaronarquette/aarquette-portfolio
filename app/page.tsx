@@ -7,9 +7,34 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { GrDocumentPdf } from "react-icons/gr";
 import { NoiseBackground } from '@/components/ui/noise-background';
 import { Wrench, Sparkles, Layers, Zap } from "lucide-react";
+import { Oval } from "react-loader-spinner"
 import GridItem from '@/components/GridItem';
+import useSWR, { Fetcher } from 'swr'
+import ProjectsGridItem from '@/components/ProjectsGridItem';
+import { IconDictionary, ValidIcons } from '@/components/IconDictionary';
+
+interface Projects {
+  title: string;
+  icon: ValidIcons;
+  frontendStack: string[];
+  backendStack: string[];
+  projectType: "Personal" | "Group";
+  role: string;
+  description: string;
+  isLive: boolean;
+  liveDemoLink: string;
+  githubLink: string;
+  tags: Array<string>;
+}
+
+const fetcher: Fetcher<Projects[], string> = (...args) => fetch(...args).then(res => res.json())
 
 export default function Home() {
+  // Edit this variable to change the amount of columns for the projects section for each screen size
+  // Note: EDIT THE GRID CLASSES MANUALLY
+  const projectsCol = {sm: 1, md: 2, xl: 3}
+  const { data, error, isLoading } = useSWR('/api/projects', fetcher)
+  
   const tagline1 = "Turning ", tagline2 = "Into Seamless Web Applications"
   const keywords = ["User Needs", "Database Schema", "Complex Logic"]
 
@@ -18,6 +43,7 @@ export default function Home() {
   const techStackClass = "w-20 h-20 cursor-pointer rounded-full bg-linear-to-r from-neutral-100 via-neutral-100 to-white px-2.5 py-1.5 text-xs text-black shadow-[0px_2px_0px_0px_var(--color-neutral-50)_inset,0px_0.5px_1px_0px_var(--color-neutral-400)] transition-all duration-100 active:scale-98 dark:from-black dark:via-black dark:to-neutral-900 dark:text-white dark:shadow-[0px_1px_0px_0px_var(--color-neutral-950)_inset,0px_1px_0px_0px_var(--color-neutral-800)]"
   return (
     <>
+      {/* Intro Section */}
       <section className="hero bg-background min-h-screen">
         <div className="hero-content text-center">
           <div className="max-w-6xl">
@@ -69,11 +95,12 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="hero h-screen">
-        <div className="relative hero-content flex-col md:p-10">
+      {/* About Me Section */}
+      <section className="hero xl:h-screen">
+        <div className="hero-content relative flex-col md:p-10">
           {/* <Image></Image> */}
           <div className='xl:absolute xl:inset-0 xl:flex xl:items-center xl:justify-center'>
-            <h1 className="text-5xl font-bold">About Me</h1>
+            <h1 className="text-5xl md:text-6xl font-bold">About Me</h1>
           </div>
           {/*//TODO: Fix bento grid design -> Make it look better and more like bento grids */}
           <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-204 xl:grid-rows-3">
@@ -102,6 +129,36 @@ export default function Home() {
               description="There are always new frameworks, programming languages, and libraries in the horizon. You can only choose to learn quickly or lose the battle. I choose the former."
             />
           </ul>
+        </div>
+      </section>
+      {/* Projects Section */}
+      <section className='hero xl:h-screen'>
+        <div className='hero-content flex h-screen w-full max-w-6xl flex-col items-center justify-center'>
+          <h1 className='text-5xl md:text-6xl m-4 font-bold'>Projects</h1>
+          {isLoading || error ? 
+          (
+            <Oval 
+            strokeWidth={3} 
+            >
+              {/*//TODO: Fix wheel color to match website color theme*/}
+            </Oval>  
+          ) : (
+            <ul className="grid w-full min-h-0 xl:max-h-5/7 gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-none md:grid-rows-3 xl:grid-rows-2">
+              {data?.map((project, idx) => {
+                return (
+                <ProjectsGridItem 
+                key={idx}
+                area={`md:[grid-area:${1 + Math.floor(idx / projectsCol.md)}/${idx % projectsCol.md + 1}/${Math.floor(idx / projectsCol.md) + 2}/${idx % projectsCol.md + 2}] xl:[grid-area:${1 + Math.floor(idx / projectsCol.xl)}/${idx % projectsCol.xl + 1}/${Math.floor(idx / projectsCol.xl) + 2}/${idx % projectsCol.xl + 2}]`}
+                icon={<IconDictionary icon={project.icon}/> /*//TODO: Optimize this component by manually mapping all icons into imports */}
+                title={project.title}
+                description={project.description}
+                isLive={project.isLive}
+                liveDemoLink={project.liveDemoLink}
+                githubLink={project.githubLink}
+                />
+              )})}
+            </ul>
+          )}
         </div>
       </section>
     </>
